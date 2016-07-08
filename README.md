@@ -27,7 +27,7 @@ Build and run the code as follows;
 ```
 cd graphs-to-shingle-vectors
 make optimized
-./streamspot --edges=../streamspot/infoleak_small_units.CDM13.ss --chunk-length 24 > shingles/infoleak_small_units.CDM13.sv
+./streamspot --edges=../streamspot/infoleak_small_units.CDM13.ss --chunk-length 24 > ../shingles/infoleak_small_units.CDM13.sv
 cd ..
 ```
 
