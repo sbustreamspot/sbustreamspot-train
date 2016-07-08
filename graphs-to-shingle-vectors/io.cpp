@@ -99,13 +99,19 @@ tuple<uint32_t,vector<edge>> read_edges(string filename) {
 
   close(fd);
 
-#ifdef VERBOSE
-  for (uint32_t i = 0; i < edges.size(); i++) {
+#ifdef DEBUG
+  for (uint32_t i = 0; i < train_edges.size(); i++) {
     cout << "Edge " << i << ": ";
-    print_edge(edges[i]);
+    cout << get<0>(train_edges[i]) << "\t"; // source id
+    cout << get<1>(train_edges[i]) << "\t"; // source type
+    cout << get<2>(train_edges[i]) << "\t"; // dest id
+    cout << get<3>(train_edges[i]) << "\t"; // dest type
+    cout << get<4>(train_edges[i]) << "\t"; // edge type
+    cout << get<5>(train_edges[i]) << "";   // graph id
     cout << endl;
   }
-  cout << "Train edges: " << num_train_edges << endl;
+  cout << "Number of train edges: " << num_train_edges << endl;
+  cout << "Number of train graphs: " << max_gid + 1 << endl;
 #endif
 
   return make_tuple(max_gid + 1, train_edges);
