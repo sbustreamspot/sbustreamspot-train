@@ -27,14 +27,13 @@ Build and run the code as follows;
 ```
 cd graphs-to-shingle-vectors
 make optimized
-./streamspot --edges ../streamspot/infoleak_small_units.CDM13.ss --chunk-length 50 > ../shinglevectors/infoleak_small_units.CDM13.sv
+./streamspot --edges=../streamspot/infoleak_small_units.CDM13.ss --chunk-length 24 > shingles/infoleak_small_units.CDM13.sv
 cd ..
 ```
 
 **Cluster the training graph shingle vectors**
 
 Ensure the dependencies have been installed: `pip install -r requirements.txt`
-
 ```
 python cluster_graphs.py --input shinglevectors/infoleak_small_units.CDM13.sv > clusters/infoleak_small_units.CDM13.cl
 ```
