@@ -4,6 +4,42 @@
 
 [http://www3.cs.stonybrook.edu/~emanzoor/streamspot/](http://www3.cs.stonybrook.edu/~emanzoor/streamspot/)
 
+## Training Procedure
+
+The following steps assume this repository has been cloned and all dependencies installed.
+
+**Convert the training data from CDM13/Avro to StreamSpot**
+
+For detailed instructions, see the [sbustreamspot-cdm README](https://github.com/sbustreamspot/sbustreamspot-cdm).
+
+For the purpose of instruction, `infoleak_small_units.CDM13.avro` is assumed to be the training data.
+
+   * Get the StreamSpot CDM translation code: `git clone https://github.com/sbustreamspot/sbustreamspot-cdm.git`
+   * Install its dependencies: `pip install -r requirements.txt`
+   * Convert CDM13/Avro training data to StreamSpot edges: `python translate_cdm_to_streamspot.py --url avro/infoleak_small_units.CDM13.avro --format avro --source file --concise > streamspot/infoleak_small_units.CDM13.ss`
+
+**Convert the StreamSpot training graphs to shingle vectors**
+
+The graph-to-shingle-vector transformation code is in C++ to ensure high performance.
+
+Build and run the code as follows;
+```
+cd graphs-to-shingle-vectors
+make
+./graphs-to-shingle-vectors --input ../streamspot/infoleak_small_units.CDM13.ss --chunk-length 50 > ../shinglevectors/infoleak_small_units.CDM13.sv
+cd ..
+```
+
+**Cluster the training graph shingle vectors**
+
+Ensure the dependencies have been installed: `pip install -r requirements.txt`
+
+```
+python cluster_graphs.py --input shinglevectors/infoleak_small_units.CDM13.sv > clusters/infoleak_small_units.CDM13.cl
+```
+
+The `*.cl` file can then be provided to [streamspot-core](https://github.com/sbustreamspot/sbustreamspot-core).
+
 ## Contact
 
    * emanzoor@cs.stonybrook.edu
