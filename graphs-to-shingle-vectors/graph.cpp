@@ -154,7 +154,7 @@ void construct_shingle_vectors(vector<shingle_vector>& shingle_vectors,
       queue<tuple<uint32_t,char,char>> q; // (nodeid, nodetype, edgetype)
       unordered_map<uint32_t,uint32_t> d;
 
-      q.push(make_tuple(kv.first.first, kv.first.second, ' '));
+      q.push(make_tuple(kv.first.first, kv.first.second, kv.first.second));
       d[kv.first.first] = 0;
 
       while (!q.empty()) {
@@ -181,6 +181,7 @@ void construct_shingle_vectors(vector<shingle_vector>& shingle_vectors,
         // outgoing edges are already sorted by timestamp
         for (auto& e : graphs[i][make_pair(uid, utype)]) {
           auto& vid = get<0>(e);
+          assert(uid != vid); // no self loops allowed
           d[vid] = d[uid] + 1;
           q.push(e);
         }
