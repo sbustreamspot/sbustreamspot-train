@@ -21,12 +21,13 @@ For the purpose of instruction, `infoleak_small_units.CDM13.avro` is assumed to 
 **Convert the StreamSpot training graphs to shingle vectors**
 
 The graph-to-shingle-vector transformation code is in C++ to ensure high performance.
+It is a modified version of the [streamspot-core]((https://github.com/sbustreamspot/sbustreamspot-core) code.
 
 Build and run the code as follows;
 ```
 cd graphs-to-shingle-vectors
-make
-./graphs-to-shingle-vectors --input ../streamspot/infoleak_small_units.CDM13.ss --chunk-length 50 > ../shinglevectors/infoleak_small_units.CDM13.sv
+make optimized
+./streamspot --edges ../streamspot/infoleak_small_units.CDM13.ss --chunk-length 50 > ../shinglevectors/infoleak_small_units.CDM13.sv
 cd ..
 ```
 
