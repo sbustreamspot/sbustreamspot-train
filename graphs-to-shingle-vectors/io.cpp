@@ -23,7 +23,7 @@ namespace std {
 
 tuple<uint32_t,vector<edge>> read_edges(string filename) {
   // read edges into memory
-  cout << "Reading edges from: " << filename << endl;
+  cerr << "Reading edges from: " << filename << endl;
 
   vector<edge> train_edges;
   uint32_t num_train_edges = 0;
