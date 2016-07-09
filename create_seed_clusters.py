@@ -58,7 +58,9 @@ with open(input_file, 'r') as f:
             silhouette_avg = silhouette_score(X, cluster_labels, metric='cosine')
             #print n_clusters, trial, 'silhouette score =', silhouette_avg
 
-            if silhouette_avg > best_silhouette_avg:
+            if silhouette_avg > best_silhouette_avg or\
+               (silhouette_avg == best_silhouette_avg and\
+                n_clusters > best_n_clusters): # favour more clusters
                 best_silhouette_avg = silhouette_avg
                 best_n_clusters = n_clusters
                 best_cluster_labels = cluster_labels
@@ -78,6 +80,11 @@ with open(input_file, 'r') as f:
         # see https://en.wikipedia.org/wiki/Rocchio_algorithm
         mean_dist = np.mean(cluster_dists)
         std_dist = np.std(cluster_dists)
+
+        if len(cluster_dists) == 0: # singleton clusters, shouldnt happen
+            mean_dist = 0.0
+            std_dist = 0.0
+            all_cluster_dists.append(0.0)
 
         cluster_threshold[cluster_idx] = mean_dist + NUM_DEVS * std_dist # P(>) <= 10%
     mean_all_cluster_dists = np.mean(all_cluster_dists)
