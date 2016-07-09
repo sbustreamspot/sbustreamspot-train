@@ -8,6 +8,9 @@ from medoids import _k_medoids_spawn_once, k_medoids
 from scipy.spatial.distance import pdist, squareform
 from sklearn.metrics import silhouette_score
 
+# finding best number of clusters
+# http://stackoverflow.com/questions/15376075/cluster-analysis-in-r-determine-the-optimal-number-of-clusters/15376462#15376462
+
 random.seed(SEED)
 np.random.seed(SEED)
 
