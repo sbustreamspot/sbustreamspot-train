@@ -4,6 +4,11 @@
 
 [http://www3.cs.stonybrook.edu/~emanzoor/streamspot/](http://www3.cs.stonybrook.edu/~emanzoor/streamspot/)
 
+## Requirements
+
+   * [Anaconda](https://www.continuum.io/downloads) for the entire `scikit-learn` stack.
+   * GCC 5.2+ to compile the C++11 code.
+
 ## Training Procedure
 
 The following steps assume this repository has been cloned and all dependencies installed.
@@ -35,7 +40,7 @@ cd ..
 
 Ensure the dependencies have been installed: `pip install -r requirements.txt`
 ```
-python cluster_graphs.py --input shinglevectors/infoleak_small_units.CDM13.sv > clusters/infoleak_small_units.CDM13.cl
+python create_seed_clusters.py  --input shingles/infoleak_small_units.CDM13.sv > clusters/infoleak_small_units.CDM13.cl
 ```
 
 The `*.cl` file can then be provided to [streamspot-core](https://github.com/sbustreamspot/sbustreamspot-core).
