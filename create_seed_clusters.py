@@ -71,6 +71,8 @@ with open(input_file, 'r') as f:
                          if graph != cluster_center]
         all_cluster_dists.extend(cluster_dists)
 
+        # taking mean of cosine distances? seems to be ok
+        # see https://en.wikipedia.org/wiki/Rocchio_algorithm
         mean_dist = np.mean(cluster_dists)
         std_dist = np.std(cluster_dists)
 
@@ -80,6 +82,7 @@ with open(input_file, 'r') as f:
     all_cluster_threshold = mean_all_cluster_dists + NUM_DEVS * std_all_cluster_dists
 
     print str(best_n_clusters) + '\t' + str(X.shape[0]) + '\t',
+    print str(chunk_length) + '\t',
     print "{:3.4f}".format(all_cluster_threshold)
 
     for cluster_idx in range(best_n_clusters):
