@@ -34,8 +34,13 @@ tuple<uint32_t,vector<edge>> read_edges(string filename) {
   fstat(fd, &fstatbuf);
 
   // memory map the file
+#ifdef __linux__
+  static const int mmap_flags = MAP_PRIVATE|MAP_POPULATE;
+#else
+  static const int mmap_flags = MAP_PRIVATE;
+#endif
   char *data = (char*) mmap(NULL, fstatbuf.st_size, PROT_READ,
-                            MAP_PRIVATE|MAP_POPULATE, fd, 0);
+                            mmap_flags, fd, 0);
   madvise(data, fstatbuf.st_size, MADV_SEQUENTIAL);
 
   if (data < 0) { // mmap failed
@@ -47,13 +52,13 @@ tuple<uint32_t,vector<edge>> read_edges(string filename) {
   // read edges from the file
   uint32_t i = 0;
   uint32_t line = 0;
-  uint32_t max_gid = 0;
+  unordered_set<string> graph_ids;
   char src_type, dst_type, e_type;
   while (i < fstatbuf.st_size) {
     // field 1: source id
-    uint32_t src_id = data[i] - '0';
-    while (data[++i] != DELIMITER) {
-      src_id = src_id * 10 + (data[i] - '0');
+    string src_id(' ', UUID_SIZE);
+    for (uint32_t j = 0; j < UUID_SIZE; j++, i++) {
+      src_id[j] = data[i];
     }
 
     i++; // skip delimiter
@@ -63,10 +68,11 @@ tuple<uint32_t,vector<edge>> read_edges(string filename) {
     i += 2; // skip delimiter
 
     // field 3: dest id
-    uint32_t dst_id = data[i] - '0';
-    while (data[++i] != DELIMITER) {
-      dst_id = dst_id * 10 + (data[i] - '0');
+    string dst_id(' ', UUID_SIZE);
+    for (uint32_t j = 0; j < UUID_SIZE; j++, i++) {
+      dst_id[j] = data[i];
     }
+
     i++; // skip delimiter
 
     // field 4: dest type
@@ -78,14 +84,12 @@ tuple<uint32_t,vector<edge>> read_edges(string filename) {
     i += 2; // skip delimiter
 
     // field 7: graph id
-    uint32_t graph_id = data[i] - '0';
-    while (data[++i] != '\n') {
-      graph_id = graph_id * 10 + (data[i] - '0');
+    string graph_id(' ', UUID_SIZE);
+    for (uint32_t j = 0; j < UUID_SIZE; j++, i++) {
+      graph_id[j] = data[i];
     }
 
-    if (graph_id > max_gid) {
-      max_gid = graph_id;
-    }
+    graph_ids.insert(graph_id);
 
     i++; // skip newline
 
@@ -111,10 +115,10 @@ tuple<uint32_t,vector<edge>> read_edges(string filename) {
     cout << endl;
   }
   cout << "Number of train edges: " << num_train_edges << endl;
-  cout << "Number of train graphs: " << max_gid + 1 << endl;
+  cout << "Number of train graphs: " << graph_ids.size() << endl;
 #endif
 
-  return make_tuple(max_gid + 1, train_edges);
+  return make_tuple(graph_ids.size(), train_edges);
 }
 
 tuple<vector<vector<uint32_t>>, vector<double>, double>

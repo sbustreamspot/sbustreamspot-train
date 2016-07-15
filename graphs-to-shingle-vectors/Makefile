@@ -1,6 +1,7 @@
 CC=g++
 CFLAGS=-Wall -g --std=c++11
-SOURCES := $(wildcard *.cpp)
+EXCLUDES=streamhash.cpp cluster.cpp simhash.cpp
+SOURCES := $(filter-out $(EXCLUDES), $(wildcard *.cpp))
 OBJS := $(SOURCES:.cpp=.o)
 
 .PHONY: clean
