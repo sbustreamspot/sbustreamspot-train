@@ -25,10 +25,12 @@ with open(input_file, 'r') as f:
     shingles = f.readline().strip().split('\t')[1:]
 
     X = [] # note: row i = graph ID i
-    for line in f:
-        fields = map(int, line.strip().split('\t'))
+    graph_ids = []
+    for idx, line in enumerate(f):
+        fields = line.strip().split('\t')
         graph_id = fields[0]
-        shingle_vector = fields[1:]
+        graph_ids.append(graph_id)
+        shingle_vector = map(int, fields[1:])
         X.append(shingle_vector)
 
     X = np.array(X)
@@ -67,8 +69,8 @@ with open(input_file, 'r') as f:
                 best_cluster_centers = medoids
 
     all_cluster_dists = []
-    cluster_threshold = [-1] * best_n_clusters
-    for cluster_idx in range(best_n_clusters):
+    cluster_threshold = [-1] * len(best_cluster_centers) 
+    for cluster_idx in range(len(best_cluster_centers)):
         cluster_center = best_cluster_centers[cluster_idx].kernel
         cluster_graphs = best_cluster_centers[cluster_idx].elements
 
@@ -91,12 +93,12 @@ with open(input_file, 'r') as f:
     std_all_cluster_dists = np.mean(all_cluster_dists)
     all_cluster_threshold = mean_all_cluster_dists + NUM_DEVS * std_all_cluster_dists
 
-    print str(best_n_clusters) + '\t' + str(X.shape[0]) + '\t',
+    print str(len(best_cluster_centers)) + '\t' + str(X.shape[0]) + '\t',
     print str(chunk_length) + '\t',
     print "{:3.4f}".format(all_cluster_threshold)
 
-    for cluster_idx in range(best_n_clusters):
+    for cluster_idx in range(len(best_cluster_centers)):
         cluster_graphs = best_cluster_centers[cluster_idx].elements
         threshold = cluster_threshold[cluster_idx]
         print "{:3.4f}".format(threshold) + '\t',
-        print '\t'.join([str(graph) for graph in cluster_graphs])
+        print '\t'.join([str(graph_ids[graph]) for graph in cluster_graphs])

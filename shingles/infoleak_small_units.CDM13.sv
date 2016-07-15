@@ -1,12 +1,15 @@
-52	24
-shingles	yexeyexeyexeyexeyexeyexe	aaxexeyexeyexeyexexexeye	yeyeCeyeCeyeCeyeCeBeCeCe	aaxexeyexeyexeye	CfyfxeoeoeoeCexeCeyeyeCe	yexeyeyexeyexeyeyexeyexe	yexeyexeyexeyexexeyeyexe	xexexeyexeyexeyexeyexexe	yfxeyeyexexeyexeyexexeye	aaxexeyexeqe	CfCfCfCfCeyeCeCeyeCeyeCe	xexeyeyOra	yeyeyera	aayOqe	xeCeyeyeCeCfxeyeyeyfCeye	yexexeyeyexexexexexexexe	aayO	yexexeyexeyexeyexeyexeye	CeoeCfCeCeyfCeyeyeCeCeyf	xexeyeyexeyeyexeyeyexeye	CfxeyeyeyfCeyeCeCeyeCeye	aaqe	xeyexeyeyeyexeyexeyeyeye	aaxexeyexeyexeyexeyexeyf	yeyexeyexeyeyeyexeyexeye	CfCfCfCfCfCfCfCfCfCfCfCf	CfCfCfCeCeyfCfCeCeyeyeCe	xexeyeyeyexeyeyeyeyeyeye	aaCOyOxeyeyeye	aayOCeraHayOCeyO	yeyeCeCeyfCfyfxeoeoeoeCe	CeyfCfyfxeoeoeoeCexeCeye	xeCexexexexexeyeyexeyeye	aaxexeyexeyexeyexeyexeye	xeyeyexexeyeyexexeyeyexe	xeyexeyexexeyexeyexexeye	aaxexeyexexeyexeyexeyexe	xeyeyeyfyfyfyfCexeyeyexe	yexeyexeyexeyexe	xexeyeyeyexeyeyeyeyeyeCe	xeyexexeoeoeoeCexeCeyeye	yeyeCeCeyeCeyeCeCeoeBeCe	CeCeoeBeCeCeoeCfCeCeyfCe	yeyexeyeyeyexeyeyeyeyeye	CeCfxeyeyeyfCeCeCeCeCeCe	oeoeCexeCeyeyeCeCfxeyeye	yeCfyfyeyeCeCeyfCfyfxeoe	yfCfCfCfCfCfCfCfCfCfCfCf	CfCfCfCfCeyeyfyfCfCeCfCf	CeoeBeCeCeoeCfCfCfCfCfCf	yeCeCfyfCeyeCeCeyeCeyeCe	yeCeCeCeoeBeoeCeCeyfxeoe
-0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-1	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-2	0	0	0	0	0	1	1	1	0	0	0	0	1	0	0	1	0	1	0	1	0	1	1	0	1	0	0	1	0	0	0	0	1	1	1	2	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
-3	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-4	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-5	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-6	0	0	1	0	1	0	0	0	1	0	1	0	0	0	1	0	0	0	1	0	1	0	0	1	0	1	1	0	0	0	1	1	0	0	0	0	0	1	0	1	1	1	1	0	1	1	1	1	1	1	1	1
-7	0	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-8	0	0	0	0	0	1	1	1	0	0	0	0	1	0	0	1	0	1	0	1	0	1	1	0	1	0	0	1	0	0	0	0	1	1	1	2	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
-9	18	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0
+56	24
+shingles	aaCOyOxeyeyeye	aaxexeyexeyexeye	yexeyexeyexeyexe	xeyexexeoeoeoeCexeCeyeye	aayeCfyf	aaCeyeCeCeyeCeyeCeCeoeBe	aaxexeyexeyexeyexeyexeyf	yexeyexeyexeyexeyexeyexe	yeCeCeoeBeCeCeoeCfCfCfCf	xeCexexexexexeyeyexeyeye	CeCfxeyeyeyfCeMaMaMaMaMa	CfCfCfCfCfCfCeyeCeCeyeCe	CeCeoeCfCeCeyf	MaMaMaMaMaMaMa	CeoeBeoeCeCeyfxeoeyeyeCe	aaCeCeCeCeCeye	aayO	aaxexeyexexeyexeyexeyexe	CfCfCfCfCfCfCf	xeyeyeyfyfyfyfCexeyeyexe	aayeyeCeCeyfCfyfxeoeoeoe	CeoeCfCeCeyf	aayeCeCeyeCeyeCeCeoeBeCe	CfCeCf	aaCfCfCfCfCfCfCfCeyeyfyf	oeCexeCeyeyeCeCfyf	aaqe	yeyexeyexeyeyeyexeyexeye	oeCexeCeyeyeCeCfxeyeyeyf	yeCeyeCeyeCeBeCeCe	aaCeyeCeCeyeCeyeCeyeCeCe	yexexeyexeyexeyexeyexeye	xexeyeyeyexeyeyeyeyeyeye	aayOqe	aaCeye	xeyexeyeyeyexeyexeyeyeye	yeyexeyeyeyexeyeyeyeyeye	yeyeyera	yexeyeyexeyexeyeyexeyexe	aaxexeyexeyexeyexeyexeye	xeyexeyexexeyexeyexexeye	aaCeyeyeCeCeyfCfyfxeoeoe	xexexeyexeyexeyexeyexexe	CfCfCfCfCfCeCeyfCfCe	aaCfCfCfCfCfCfCfCfCfCfCf	aaxexeyexeyexeyexexexeye	xexeyeyexeyeyexeyeyexeye	aayOCeraHayOCeyO	aaxexeyexeqe	xexeyeyeyexeyeyeyeyeyeCe	CexeCeyeyeCeCfxeyeyeyfCf	yexeyexeyexeyexexeyeyexe	xexeyeyOra	xeyeyexexeyeyexexeyeyexe	yfxeyeyexexeyexeyexexeye	yexexeyeyexexexexexexexe
+2555a0e9916e1ced3281d960433ee0e7	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	1	1	0	0	1	1	1	1	1	2	0	1	0	0	0	1	0	0	0	0	1	0	1	0	1
+df5ee0301ddb4915c6ca58e6e72086e4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	1	0	0	0
+90537bdd0506b3308b75efbc7c1334b2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+7acb6405463cba6914225d74686d611c	0	0	0	1	1	1	1	0	1	0	1	1	1	1	1	1	0	0	1	1	1	1	1	1	1	1	0	0	2	1	1	0	0	0	1	0	0	0	0	0	0	3	0	1	1	0	0	0	0	1	1	0	0	0	1	0
+c89034c5418b5e2739b1fc03eb02cb38	0	0	1	0	0	0	0	18	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+8ed9546b3e7d3652aeeea923559f4383	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+a9719b05bf4410006fc2b3de91d4271b	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+cb43fd5c766ad4de5c5f1910b6518e9c	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	1	1	0	0	1	1	1	1	1	2	0	1	0	0	0	1	0	0	0	0	1	0	1	0	1
+429a9359d6448dfd856b9905bb2681c5	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0
+051dfbbf6cad8356bb138497b999e50f	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+b5fdb072582430fed53887c17d314a0a	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
+81d0ca3ad75c6fe61668620b046e3d68	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+4a0fe8be8e9e1a85fb7b44d8d0d05078	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
