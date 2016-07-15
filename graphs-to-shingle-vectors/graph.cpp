@@ -63,10 +63,10 @@ void construct_shingle_vectors(unordered_map<string,shingle_vector>& shingle_vec
       d[kv.first.first] = 0;
 
       while (!q.empty()) {
-        auto& node = q.front();
-        auto& uid = get<0>(node);
-        auto& utype = get<1>(node);
-        auto& etype = get<2>(node);
+        auto node = q.front();
+        auto uid = get<0>(node);
+        auto utype = get<1>(node);
+        auto etype = get<2>(node);
         q.pop();
 
 #ifdef VERBOSE
@@ -88,7 +88,7 @@ void construct_shingle_vectors(unordered_map<string,shingle_vector>& shingle_vec
 
         // outgoing edges are already sorted by timestamp
         for (auto& e : kvg.second.at(make_pair(uid, utype))) {
-          auto& vid = get<0>(e);
+          auto vid = get<0>(e);
           assert(uid != vid); // no self loops allowed
           d[vid] = d[uid] + 1;
           q.push(e);
