@@ -57,6 +57,11 @@ with open(input_file, 'r') as f:
                     cluster_labels[graph] = medoid_idx 
             cluster_labels = np.array(cluster_labels)
 
+            # HACK: If only 1 cluster found (should not happen w/ good training)
+            actual_n_clusters = len(medoids)
+            if actual_n_clusters == 1:
+                continue
+
             silhouette_avg = silhouette_score(X, cluster_labels, metric='cosine')
             #print n_clusters, trial, 'silhouette score =', silhouette_avg
 
