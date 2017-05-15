@@ -73,8 +73,8 @@ int main(int argc, char *argv[]) {
   cerr << static_cast<double>(diff.count()) << "us" << endl;
 
   // per-graph data structures
-  unordered_map<string,graph> graphs;
-  unordered_map<string,shingle_vector> shingle_vectors;
+  unordered_map<uint32_t,graph> graphs;
+  unordered_map<uint32_t,shingle_vector> shingle_vectors;
 
   // construct training graphs
   cerr << "Constructing " << num_graphs << " training graphs..." << endl;
