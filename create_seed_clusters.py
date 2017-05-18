@@ -50,13 +50,13 @@ with open(input_file, 'r') as f:
         km = MiniBatchKMeans(n_clusters=n_clusters, init='k-means++', n_init=5,
                              init_size=1000, batch_size=1000, verbose=False,
                              random_state=SEED)
-        #print 'Clustering, k =', n_clusters,
-        #t0 = time()
+        print 'Clustering, k =', n_clusters,
+        t0 = time()
         km.fit(X)
-        #print 'done in %0.3fs.' % (time() - t0),
+        print 'done in %0.3fs.' % (time() - t0),
 
         silhouette_avg = silhouette_score(X, km.labels_)
-        #print 'Silhouette Coefficient: %0.3f' % silhouette_avg
+        print 'Silhouette Coefficient: %0.3f' % silhouette_avg
 
         if silhouette_avg > best_silhouette_avg or\
            (silhouette_avg == best_silhouette_avg and\
@@ -88,8 +88,7 @@ with open(input_file, 'r') as f:
 
             print str(best_n_clusters) + '\t' + str(X.shape[0]) + '\t',
             print str(chunk_length) + '\t',
-            print "{:3.4f}".format(all_cluster_threshold) + '\t',
-            print "{:3.4f}".format(best_silhouette_avg)
+            print "{:3.4f}".format(all_cluster_threshold)
 
             for cluster_idx in range(best_n_clusters):
                 cluster_graphs = [i for i in range(X.shape[0])
