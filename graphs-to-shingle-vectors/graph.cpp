@@ -21,7 +21,7 @@
 
 namespace std {
 
-void update_graphs(edge& e, unordered_map<uint32_t,graph>& graphs) {
+void update_graphs(edge& e, unordered_map<string,graph>& graphs) {
   auto& src_id = get<F_S>(e);
   auto& src_type = get<F_STYPE>(e);
   auto& dst_id = get<F_D>(e);
@@ -36,13 +36,13 @@ void update_graphs(edge& e, unordered_map<uint32_t,graph>& graphs) {
                                                         e_type));
 }
 
-void construct_shingle_vectors(unordered_map<uint32_t,shingle_vector>& shingle_vectors,
+void construct_shingle_vectors(unordered_map<string,shingle_vector>& shingle_vectors,
                                unordered_map<string,uint32_t>& shingle_id,
-                               const unordered_map<uint32_t,graph>& graphs,
+                               const unordered_map<string,graph>& graphs,
                                uint32_t chunk_length) {
 
   unordered_set<string> unique_shingles;
-  unordered_map<uint32_t,unordered_map<string,uint32_t>> temp_shingle_vectors;
+  unordered_map<string,unordered_map<string,uint32_t>> temp_shingle_vectors;
 
   // construct a temporary shingle vector for each graph
   for (auto& kvg : graphs) {
