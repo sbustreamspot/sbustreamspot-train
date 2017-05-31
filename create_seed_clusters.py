@@ -7,7 +7,8 @@ import random
 import scipy
 import sklearn.preprocessing
 from sklearn.metrics import silhouette_score
-from sklearn.cluster import MiniBatchKMeans
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.cluster import KMeans, MiniBatchKMeans
 import sys
 from time import time
 
@@ -30,6 +31,7 @@ with open(input_file, 'r') as f:
     # read shingle count vectors from file
     X = [] # note: row i = graph ID i
     graph_ids = []
+    print >> sys.stderr, 'Reading edges...'
     for idx, line in enumerate(f):
         fields = line.strip().split('\t')
         graph_id = fields[0]
@@ -37,23 +39,26 @@ with open(input_file, 'r') as f:
         shingle_vector = map(int, fields[1:])
         X.append(shingle_vector)
     X = np.array(X, dtype=np.float)
+    Xorig = np.array(X, dtype=np.float)
+    X = scipy.sparse.csr_matrix(X)
 
     # L2-normalize shingle-count vectors
+    print >> sys.stderr, 'Normalize L2...'
     X = sklearn.preprocessing.normalize(X, norm='l2', axis=1, copy=True)
-   
+
     # kmeans
     best_n_clusters = -1
     best_silhouette_avg = -1
     best_cluster_labels = None
     best_cluster_centers = None
-    for n_clusters in range(2, X.shape[0]):
-        km = MiniBatchKMeans(n_clusters=n_clusters, init='k-means++', n_init=5,
-                             init_size=1000, batch_size=1000, verbose=False,
-                             random_state=SEED)
+    for n_clusters in [50, 100, 250, 500, 1000, 2000, 2500, 3000, 3500, 4000]:
+        km = KMeans(n_clusters=n_clusters, init='k-means++', n_init=5,
+                    max_iter=2000, precompute_distances=True,
+                    verbose=False, random_state=SEED, n_jobs=-1)
         print 'Clustering, k =', n_clusters,
         t0 = time()
-        km.fit(X)
-        print 'done in %0.3fs.' % (time() - t0),
+        km = km.fit(X)
+        print 'done in %6.3fs.' % (time() - t0),
 
         silhouette_avg = silhouette_score(X, km.labels_)
         print 'Silhouette Coefficient: %0.3f' % silhouette_avg
@@ -65,36 +70,37 @@ with open(input_file, 'r') as f:
             best_n_clusters = n_clusters
             best_cluster_labels = km.labels_
             best_cluster_centers = km.cluster_centers_
+        sys.stdout.flush()
 
-            # compute radius of each cluster
-            all_cluster_dists = []
-            cluster_threshold = [-1] * len(best_cluster_centers) 
-            for cluster_idx in range(best_n_clusters):
-                cluster_center = best_cluster_centers[cluster_idx]
-                cluster_graphs = [i for i in range(X.shape[0])
-                                  if best_cluster_labels[i] == cluster_idx]
-                cluster_dists = [scipy.spatial.distance.cosine(cluster_center, X[i])
-                                 for i in cluster_graphs]
-                all_cluster_dists.extend(cluster_dists)
+    print 'Finished clustering'
+    # compute radius of each cluster
+    all_cluster_dists = []
+    cluster_threshold = [-1] * len(best_cluster_centers) 
+    for cluster_idx in range(best_n_clusters):
+        cluster_center = best_cluster_centers[cluster_idx]
+        cluster_center = scipy.sparse.csr_matrix(cluster_center)
+        cluster_graphs = [i for i in range(X.get_shape()[0])
+                          if best_cluster_labels[i] == cluster_idx]
+        cluster_dists = [1.0 - cosine_similarity(cluster_center, X.getrow(i))
+                         for i in cluster_graphs]
+        all_cluster_dists.extend(cluster_dists)
 
-                mean_dist = np.mean(cluster_dists)
-                std_dist = np.std(cluster_dists)
-                cluster_threshold[cluster_idx] = min(1.0, mean_dist +\
-                                                     NUM_DEVS * std_dist)
-            mean_all_cluster_dists = np.mean(all_cluster_dists)
-            std_all_cluster_dists = np.mean(all_cluster_dists)
-            all_cluster_threshold = min(1.0, mean_all_cluster_dists +\
-                                        NUM_DEVS * std_all_cluster_dists)
+        mean_dist = np.mean(cluster_dists)
+        std_dist = np.std(cluster_dists)
+        cluster_threshold[cluster_idx] = min(1.0, mean_dist +\
+                                             NUM_DEVS * std_dist)
+    mean_all_cluster_dists = np.mean(all_cluster_dists)
+    std_all_cluster_dists = np.mean(all_cluster_dists)
+    all_cluster_threshold = min(1.0, mean_all_cluster_dists +\
+                                NUM_DEVS * std_all_cluster_dists)
 
-            print str(best_n_clusters) + '\t' + str(X.shape[0]) + '\t',
-            print str(chunk_length) + '\t',
-            print "{:3.4f}".format(all_cluster_threshold)
+    print str(best_n_clusters) + '\t' + str(X.shape[0]) + '\t',
+    print str(chunk_length) + '\t',
+    print "{:3.4f}".format(all_cluster_threshold)
 
-            for cluster_idx in range(best_n_clusters):
-                cluster_graphs = [i for i in range(X.shape[0])
-                                  if best_cluster_labels[i] == cluster_idx]
-                threshold = cluster_threshold[cluster_idx]
-                print "{:3.4f}".format(threshold) + '\t',
-                print '\t'.join([str(graph_ids[graph]) for graph in cluster_graphs])
-            print
-            sys.stdout.flush()
+    for cluster_idx in range(best_n_clusters):
+        cluster_graphs = [i for i in range(X.shape[0])
+                          if best_cluster_labels[i] == cluster_idx]
+        threshold = cluster_threshold[cluster_idx]
+        print "{:3.4f}".format(threshold) + '\t',
+        print '\t'.join([str(graph_ids[graph]) for graph in cluster_graphs])
