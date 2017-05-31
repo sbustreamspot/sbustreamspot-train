@@ -91,7 +91,7 @@ tuple<uint32_t,vector<edge>> read_edges(string filename) {
 
     graph_ids.insert(graph_id);
 
-    i++; // skip newline
+    while (data[i++] != '\n'); // skip newline
 
     train_edges.push_back(make_tuple(src_id, src_type,
                                      dst_id, dst_type,
