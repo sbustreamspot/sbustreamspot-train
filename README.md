@@ -19,7 +19,7 @@ For detailed instructions, see the [sbustreamspot-cdm README](https://github.com
 
 For the purpose of instruction, `infoleak_small_units.CDM13.avro` is assumed to be the training data.
 
-   * Get the StreamSpot CDM translation code: `git clone https://github.com/sbustreamspot/sbustreamspot-cdm.git`
+   * Get the StreamSpot CDM translation code: `git clone https://github.com/sbustreamspot/sbustreamspot-cdm.git -b propagate-uuid`
    * Install its dependencies: `pip install -r requirements.txt`
    * Convert CDM13/Avro training data to StreamSpot edges: `python translate_cdm_to_streamspot.py --url avro/infoleak_small_units.CDM13.avro --format avro --source file --concise > streamspot/infoleak_small_units.CDM13.ss`
 
